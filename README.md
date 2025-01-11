@@ -6,7 +6,7 @@
 
 1. Python 3.8 или выше.
 2. Установленные библиотеки:
-- `requests 2.32.3` 
+- `requests 2.31.0` 
 - `python-telegram-bot 13.15` 
 - `urllib3 1.26.5`
 
