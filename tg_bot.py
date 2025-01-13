@@ -23,7 +23,7 @@ def main():
 
     tg_token = env.str("TG_TOKEN")
     api_devman_token = env.str("API_DEVMAN_TOKEN")
-    chat_id = env.str("CHAT_ID", default="-1001234567890")
+    chat_id = env.str("CHAT_ID")
     bot = telegram.Bot(token=tg_token)
 
     url = 'https://dvmn.org/api/long_polling/'
@@ -44,11 +44,10 @@ def main():
                     last_timestamp = attempt['timestamp']
                     send_feedback(attempt, bot, chat_id)
 
-        except requests.exceptions.ReadTimeout:
-            pass
         except requests.exceptions.ConnectionError:
             print('ConnectionError: Повторное подключение...')
             time.sleep(60)
+        except requests.exceptions.ReadTimeout:
             continue
 
 
